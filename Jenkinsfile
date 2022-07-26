@@ -22,12 +22,6 @@ pipeline {
             }
         }
 
-        stage('Build project') {
-            steps {
-                dotnetPublish project: 'Sample.Project.sln', sdk: 'dotnet-sdk', selfContained: false
-            }
-        }
-
         stage('publish project') {
             steps {
                 dotnetPublish project: 'Sample.Project.sln', sdk: 'dotnet-sdk', selfContained: false
