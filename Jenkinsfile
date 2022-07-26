@@ -10,10 +10,22 @@ pipeline {
             }
         }
 
-        stage('build solution') {
+        stage('Restore') {
             steps {
                 dotnetRestore project: 'Sample.Project.sln', sdk: 'dotnet-sdk'
             }
+        }
+
+        stage('Build project') {
+            dotnetBuild project: 'Sample.Project.sln', sdk: 'dotnet-sdk'
+        }
+
+        stage('Build project') {
+            dotnetPublish project: 'Sample.Project.sln', sdk: 'dotnet-sdk', selfContained: false
+        }
+
+        stage('publish project') {
+            dotnetPublish project: 'Sample.Project.sln', sdk: 'dotnet-sdk', selfContained: false
         }
     }
 }
