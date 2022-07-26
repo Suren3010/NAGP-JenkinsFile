@@ -9,5 +9,11 @@ pipeline {
                 echo 'Project cloned...'
             }
         }
+
+        stage('build solution') {
+            steps {
+                dotnetRestore project: 'Sample.Project.sln', sdk: 'dotnet-sdk'
+            }
+        }
     }
 }
