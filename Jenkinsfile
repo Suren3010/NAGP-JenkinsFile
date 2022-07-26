@@ -17,15 +17,21 @@ pipeline {
         }
 
         stage('Build project') {
-            dotnetBuild project: 'Sample.Project.sln', sdk: 'dotnet-sdk'
+            steps {
+                dotnetBuild project: 'Sample.Project.sln', sdk: 'dotnet-sdk'
+            }
         }
 
         stage('Build project') {
-            dotnetPublish project: 'Sample.Project.sln', sdk: 'dotnet-sdk', selfContained: false
+            steps {
+                dotnetPublish project: 'Sample.Project.sln', sdk: 'dotnet-sdk', selfContained: false
+            }
         }
 
         stage('publish project') {
-            dotnetPublish project: 'Sample.Project.sln', sdk: 'dotnet-sdk', selfContained: false
+            steps {
+                dotnetPublish project: 'Sample.Project.sln', sdk: 'dotnet-sdk', selfContained: false
+            }
         }
     }
 }
