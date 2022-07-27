@@ -4,7 +4,7 @@ pipeline {
         stage('Clone project') {
             steps {
                 echo 'Cloning project...'
-                git changelog: false, poll: false, url: 'https://github.com/Suren3010/Sample.Project.git'
+                checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Suren3010/Sample.Project.git']]]
                 echo 'Project cloned...'
             }
         }
