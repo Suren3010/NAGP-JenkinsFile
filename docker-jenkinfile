@@ -26,5 +26,11 @@ pipeline {
                 dotnetBuild project: 'Sample.Project.sln', sdk: 'dotnet-sdk'
             }
         }
+        //*** Publish  */
+        stage('Publish') {
+            steps {
+                dotnetPublish configuration: 'Release', outputDirectory: '/publish', project: 'Sample.Project/Sample.Project.csproj', sdk: 'dotnet-sdk', selfContained: false
+            }
+        }
     }
 }
