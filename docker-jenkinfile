@@ -1,11 +1,29 @@
 pipeline {
     agent any
     stages {
+        //****** Cloning project */
         stage('Clone project') {
             steps {
                 echo 'Cloning project...'
                 checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Suren3010/Sample.Project.git']]]
                 echo 'Project cloned...'
+            }
+        }
+        stage('Cleaning project') {
+            steps {
+                dotnetClean project: 'Sample.Project.sln', sdk: 'dotnet-sdk'
+            }
+        }
+        //**** Restore dependencies */
+        stage('Restore dependencies') {
+            steps {
+                dotnetRestore project: 'Sample.Project.sln', sdk: 'dotnet-sdk'
+            }
+        }
+        //***  Building project */
+        stage('Build solution') {
+            steps {
+                dotnetBuild project: 'Sample.Project.sln', sdk: 'dotnet-sdk'
             }
         }
     }
