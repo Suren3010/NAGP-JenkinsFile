@@ -32,5 +32,12 @@ pipeline {
                 dotnetPublish configuration: 'Release', project: 'Sample.Project/Sample.Project.csproj', sdk: 'dotnet-sdk', selfContained: false
             }
         }
+
+        //*** Build docker image */
+        stage('build docker image') {
+            steps {
+                powershell 'docker --version'
+            }
+        }
     }
 }
