@@ -1,4 +1,8 @@
 pipeline {
+    environment {
+        dockerImage = "sampleproject"
+    }
+
     agent any
     stages {
         //****** Cloning project */
@@ -42,7 +46,7 @@ pipeline {
 
         stage('build docker image') {
             steps {
-                powershell 'docker build  -t sampleproject:1.0 .'
+                powershell 'docker build  -t $_ENV.dockerImage:1.0 .'
             }
         }
     }
