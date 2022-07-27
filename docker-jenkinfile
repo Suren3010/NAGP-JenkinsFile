@@ -46,7 +46,7 @@ pipeline {
 
         stage('build docker image') {
             steps {
-                powershell 'docker build  -t $env:dockerImage:1.0 .'
+                powershell 'docker build  -t $(env:dockerImage):1.0 .'
             }
         }
     }
