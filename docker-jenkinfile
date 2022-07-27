@@ -34,9 +34,15 @@ pipeline {
         }
 
         //*** Build docker image */
-        stage('build docker image') {
+        stage('docker version') {
             steps {
                 powershell 'docker --version'
+            }
+        }
+
+        stage('build docker image') {
+            steps {
+                powershell 'docker build  -t sampleproject:1.0 .'
             }
         }
     }
