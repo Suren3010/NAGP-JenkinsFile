@@ -29,7 +29,7 @@ pipeline {
         //*** Publish  */
         stage('Publish') {
             steps {
-                dotnetPublish configuration: 'Release', outputDirectory: '/publish', project: 'Sample.Project/Sample.Project.csproj', sdk: 'dotnet-sdk', selfContained: false
+                dotnetPublish configuration: 'Release', project: 'Sample.Project/Sample.Project.csproj', sdk: 'dotnet-sdk', selfContained: false
             }
         }
     }
