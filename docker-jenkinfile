@@ -51,7 +51,9 @@ pipeline {
 
         stage('build docker image with docker.build') {
             steps {
-                docker.build("${env.dockerImage}:1.0")
+                script {
+                    docker.build("${env.dockerImage}:1.0")
+                }
             }
         }
     }
