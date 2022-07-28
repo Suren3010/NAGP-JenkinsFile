@@ -45,6 +45,7 @@ pipeline {
         }
         stage('Write parameters') {
             steps {
+                echo env.BUILD_NUMBER
                 powershell 'write-host env.BUILD_NUMBER'
                 powershell 'write-host ${env.BUILD_NUMBER}'
                 powershell 'write-host ${env.dockerImage}'
