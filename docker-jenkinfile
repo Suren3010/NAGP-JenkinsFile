@@ -43,7 +43,13 @@ pipeline {
                 powershell 'docker --version'
             }
         }
-
+        stage('Write parameters') {
+            steps {
+                powershell 'write-host env.BUILD_NUMBER'
+                powershell 'write-host ${env.BUILD_NUMBER}'
+                powershell 'write-host ${env.dockerImage}'
+            }
+        }
         stage('build docker image') {
             steps {
                 powershell 'docker build  -t \$env:dockerImage:1.0 .'
