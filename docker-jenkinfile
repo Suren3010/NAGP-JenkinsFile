@@ -45,7 +45,9 @@ pipeline {
         }
         stage('build docker image') {
             steps {
-                def dockerImage = docker.build("surender3010/${env.dockerImage}:1.0")
+                script {
+                    def dockerImage = docker.build("surender3010/${env.dockerImage}:1.0")
+                }
             }
         }
 
