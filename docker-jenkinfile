@@ -52,7 +52,7 @@ pipeline {
         stage('build docker image with docker.build') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io', 'dockerhub2') {
+                    docker.withRegistry('https://registry.docker.io', 'dockerhub2') {
                         def dockerImage = docker.build("surender3010/${env.dockerImage}:1.0")
                         dockerImage.push()
                     }
