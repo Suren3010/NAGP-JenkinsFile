@@ -52,7 +52,7 @@ pipeline {
         stage('build docker image with docker.build') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub2') {
+                    docker.withRegistry('index.docker.io', 'dockerhub2') {
                         def dockerImage = docker.build("${env.dockerImage}:1.0")
                         dockerImage.push()
                     }
