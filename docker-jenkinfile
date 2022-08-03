@@ -61,10 +61,10 @@ pipeline {
             }
         }
 
-        stage('Cleaning') {
-            steps {
-                powershell 'docker rmi --force (docker images sampleproject --format "{{.ID}}")'
-            }
-        }
+        // stage('Cleaning') {
+        //     steps {
+        //         powershell 'docker rmi --force (docker images sampleproject --format "{{.ID}}")'
+        //     }
+        // }
     }
 }
