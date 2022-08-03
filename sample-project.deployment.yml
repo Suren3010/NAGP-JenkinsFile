@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-project
+  labels:
+    app: sample-project-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sample-project-pod
+  template:
+    metadata:
+      labels: 
+        app: sample-project-pod
+    spec:
+      containers:
+        - name: sample-project-containers
+          image: surender3010/sampleproject:1.0
+          ports:
+          - containerPort: 80

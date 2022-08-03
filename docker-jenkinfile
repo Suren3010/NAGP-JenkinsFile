@@ -1,6 +1,10 @@
 pipeline {
     environment {
         dockerImage = "sampleproject"
+        PROJECT_ID = 'nagp-devops-357918'
+        CLUSTER_NAME = 'autopilot-cluster-1'
+        LOCATION = 'asia-south2'
+        CREDENTIALS_ID = 'NAGP-devops'
     }
 
     agent any
@@ -67,5 +71,11 @@ pipeline {
         //         powershell 'docker rmi --force (docker images surender3010/sampleproject:1:0 --format "{{.ID}}")'
         //     }
         // }
+
+        stage('Deploy to GKE') {
+            steps{
+                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'sample-project.deployment.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+            }
+        }
     }
 }
