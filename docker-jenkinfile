@@ -64,7 +64,7 @@ pipeline {
 
         stage('Cleaning') {
             steps {
-                powershell 'docker rmi --force (docker images sampleproject --format "{{.ID}}")'
+                powershell 'docker rmi --force (docker images surender3010/sampleproject:1:0 --format "{{.ID}}")'
             }
         }
     }
