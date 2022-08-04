@@ -16,7 +16,7 @@ pipeline {
                 echo "Workspace -- ${env.WORKSPACE}"
             }
         }
-        stage("Get environment variable") {
+        stage("Powershell") {
             steps {
                 powerahell "dir"
             }
