@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo "Setting environemnt variable"
                 echo "custVariable -- ${env.custVariable}"
-                echo "credentials -- ${env.credentials}"
+                echo "credentials -- " + env.credentials
             }
         }
         stage("Get environment variable") {
