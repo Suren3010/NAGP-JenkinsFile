@@ -6,6 +6,9 @@ pipeline {
             environment {
                 custVariable = "test for cust variable"
             }
+            steps {
+                echo "Setting environemnt variable"
+            }
         }
         stage("Get environment variable") {
             steps{
