@@ -8,6 +8,7 @@ pipeline {
             }
             steps {
                 echo "Setting environemnt variable"
+                echo "custVariable -- ${env.custVariable}"
             }
         }
         stage("Get environment variable") {
