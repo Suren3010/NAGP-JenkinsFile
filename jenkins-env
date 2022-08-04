@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage("Set environment variable") {
+            environment {
+                custVariable = "test for cust variable"
+            }
+        }
         stage("Get environment variable") {
             steps{
                 echo "Build number -- ${env.BUILD_NUMBER}"
@@ -14,6 +19,7 @@ pipeline {
                 echo "Job name -- ${env.JOB_NAME}"
                 echo "Node name -- ${env.NODE_NAME}"
                 echo "Workspace -- ${env.WORKSPACE}"
+                echo "custVariable -- ${env.custVariable}"
             }
         }
         stage("Powershell") {
